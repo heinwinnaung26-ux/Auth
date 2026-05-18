@@ -409,6 +409,7 @@ def admin_view_all_keys(message):
     bot.reply_to(message, res, parse_mode="Markdown")
 
 # 5. Add Key
+# 5. Add Key
 @bot.message_handler(func=lambda msg: msg.text == "➕ Add Key" and is_reseller(msg.from_user.id))
 def cmd_addkey(message):
     user_states[message.from_user.id] = 'waiting_for_key'
@@ -419,9 +420,7 @@ def cmd_addkey(message):
 def process_key_data(message):
     user_id = message.from_user.id
     parts = [p.strip() for p in message.text.split("|")]
-    if len(parts) != 4: 
-        return bot.reply_to(message, "❌ ပုံစံမမှန်ပါ။ `ID | Key | Unit | Duration` အတိုင်း ပြန်လည်ပေးပို့ပါ။")
-    
+    if len(parts) != 4: return bot.reply_to(message, "❌ ပုံစံမမှန်ပါ။ `ID | Key | Unit | Duration` အတိုင်း ပြန်လည်ပေးပို့ပါ။")
     try:
         conn = sqlite3.connect(DB_FILE)
         cursor = conn.cursor()
@@ -431,14 +430,7 @@ def process_key_data(message):
         bot.reply_to(message, "✅ Key အချက်အလက် သိမ်းဆည်းပြီးပါပြီ။ Cloud သို့ လှမ်းပို့နေပါသည်...")
         sync_db_to_github()
         user_states[user_id] = None
-    except sqlite3.IntegrityError:
-        # database ထဲမှာ ID (target_id) တူနေခဲ့ရင် ဤနေရာကနေ စာပြန်ပို့ပါလိမ့်မည် (Key တူရင်တော့ အေးဆေး သိမ်းသွားပါမည်)
-        user_states[user_id] = None
-        bot.reply_to(message, "❌ ဤ Device ID သည် Database ထဲတွင် ရှိနှင့်နေပြီးသား ဖြစ်သဖြင့် ထပ်ထည့်၍မရပါ။")
-    except Exception as e:
-        # တခြား error တစ်ခုခုတက်ရင် ပြမည့်အပိုင်း
-        user_states[user_id] = None
-        bot.reply_to(message, f"❌ အမှားအယွင်း ဖြစ်ပွားခဲ့သည်- {str(e)}")
+    except: bot.reply_to(message, "❌ ဤ Key သည် Database ထဲမှာ ရှိနှင့်နေပြီးသား ဖြစ်ပါသည်။")
 # 6. View My Keys
 @bot.message_handler(func=lambda msg: msg.text == "🔑 My Keys" and is_reseller(msg.from_user.id))
 def cmd_mykeys(message):
