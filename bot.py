@@ -23,8 +23,8 @@ BOT_TOKEN = "8843922979:AAFZLgAekpj-QMblNTTVPWdHNs4kbPPoMDA"
 ADMIN_ID = 8701781484
 
 GITHUB_TOKEN = os.getenv("GH_TOKEN") if os.getenv("GH_TOKEN") else "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"
-REPO_OWNER = "GodForYou2" 
-REPO_NAME = "Approval" 
+REPO_OWNER = "ytun9959-design" 
+REPO_NAME = "Auth" 
 FILE_PATH = "key.txt" 
 RESELLER_FILE_PATH = "resellers.txt" 
 
