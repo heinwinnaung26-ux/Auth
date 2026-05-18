@@ -22,7 +22,7 @@ def run_web_server():
 BOT_TOKEN = "8843922979:AAFZLgAekpj-QMblNTTVPWdHNs4kbPPoMDA"
 ADMIN_ID = 8701781484
 
-GITHUB_TOKEN = os.getenv("GH_TOKEN") if os.getenv("GH_TOKEN") else "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"
+GITHUB_TOKEN = os.getenv("GH_TOKEN") if os.getenv("GH_TOKEN") else "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"
 REPO_OWNER = "ytun9959-design" 
 REPO_NAME = "Auth" 
 FILE_PATH = "key.txt" 
