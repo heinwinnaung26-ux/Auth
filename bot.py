@@ -20,7 +20,7 @@ def run_web_server():
 
 # ================= [ CONFIGURATION ] =================
 BOT_TOKEN = "8843922979:AAFZLgAekpj-QMblNTTVPWdHNs4kbPPoMDA"
-ADMIN_ID = 8701781484
+ADMIN_ID = 5617375002
 
 GITHUB_TOKEN = os.getenv("GH_TOKEN") 
 REPO_OWNER = "ytun9959-design" 
