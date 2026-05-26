@@ -20,7 +20,7 @@ def run_web_server():
     app.run(host='0.0.0.0', port=port)
 
 # ================= [ CONFIGURATION ] =================
-BOT_TOKEN = "8843922979:AAFZLgAekpj-QMblNTTVPWdHNs4kbPPoMDA"
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
 ADMIN_ID = 5617375002
 DEFAULT_LIMIT = 5  # ရီဆဲလာဟောင်းများအတွက် အော်တိုသတ်မှတ်ပေးမည့် Limit
 
